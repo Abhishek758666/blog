@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      <div className="space-y-8 grid grid-cols-2 gap-10">
+      <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-2 gap-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs">
         {blogs.map((blog) => (
           <BlogCard key={blog.id} blog={blog} />
         ))}

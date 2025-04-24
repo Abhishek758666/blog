@@ -24,7 +24,7 @@ export function Header() {
 
   return (
     <header className="border-b">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center bg-sidebar-accent">
         <Link href="/" className="text-2xl font-bold">
           My Blog
         </Link>

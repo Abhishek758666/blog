@@ -38,7 +38,11 @@ export function BlogCard({ blog }: BlogCardProps) {
       <CardFooter className="flex justify-between">
         <div className="flex flex-wrap gap-2">
           {blog.tags.map((tag) => (
-            <Badge key={tag} variant="secondary">
+            <Badge
+              key={tag}
+              variant="outline"
+              className="bg-white dark:bg-black"
+            >
               {tag}
             </Badge>
           ))}

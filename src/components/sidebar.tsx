@@ -17,7 +17,6 @@ export function Sidebar() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Get recent blogs (latest 5)
   const recentBlogs = [...blogData]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 5);
@@ -33,7 +32,7 @@ export function Sidebar() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs">
       <Card>
         <CardHeader>
           <CardTitle>Search</CardTitle>
@@ -95,7 +94,11 @@ export function Sidebar() {
         <CardContent>
           <div className="flex flex-wrap gap-2">
             {allTags.map((tag) => (
-              <Badge key={tag} variant="secondary">
+              <Badge
+                key={tag}
+                variant="outline"
+                className="bg-white dark:bg-black"
+              >
                 {tag}
               </Badge>
             ))}
