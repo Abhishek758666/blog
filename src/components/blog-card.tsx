@@ -1,57 +1,45 @@
-import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Heart } from "lucide-react";
+import Link from "next/link"
+import Image from "next/image"
+import { Calendar } from "lucide-react"
+
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 
 interface BlogCardProps {
-  blog: {
-    id: string;
-    title: string;
-    slug: string;
-    excerpt: string;
-    date: string;
-    tags: string[];
-    likes: number;
-  };
+  title: string
+  excerpt: string
+  date: string
+  tags: string[]
+  slug: string
 }
 
-export function BlogCard({ blog }: BlogCardProps) {
+export function BlogCard({ title, excerpt, date, tags, slug }: BlogCardProps) {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>
-          <Link href={`/blog/${blog.slug}`} className="hover:underline">
-            {blog.title}
+    <Card className="overflow-hidden">
+      <div className="relative h-48 w-full">
+        <Image src="/placeholder.svg?height=200&width=400" alt={title} fill className="object-cover" />
+      </div>
+      <CardHeader className="p-4">
+        <div className="space-y-1">
+          <Link href={`/blogs/${slug}`} className="hover:underline">
+            <h3 className="font-bold text-xl line-clamp-2">{title}</h3>
           </Link>
-        </CardTitle>
-        <div className="text-sm text-muted-foreground">{blog.date}</div>
+          <div className="flex items-center text-sm text-muted-foreground">
+            <Calendar className="mr-1 h-3 w-3" />
+            <time dateTime={date}>{date}</time>
+          </div>
+        </div>
       </CardHeader>
-      <CardContent>
-        <p className="text-muted-foreground">{blog.excerpt}</p>
+      <CardContent className="p-4 pt-0">
+        <p className="text-muted-foreground line-clamp-3">{excerpt}</p>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <div className="flex flex-wrap gap-2">
-          {blog.tags.map((tag) => (
-            <Badge
-              key={tag}
-              variant="outline"
-              className="bg-white dark:bg-black"
-            >
-              {tag}
-            </Badge>
-          ))}
-        </div>
-        <div className="flex items-center gap-1 text-muted-foreground">
-          <Heart className="h-4 w-4" />
-          <span>{blog.likes}</span>
-        </div>
+      <CardFooter className="p-4 pt-0 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <Link key={tag} href={`/blogs?tag=${tag}`}>
+            <Badge variant="secondary">{tag}</Badge>
+          </Link>
+        ))}
       </CardFooter>
     </Card>
-  );
+  )
 }
