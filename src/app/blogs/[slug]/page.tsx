@@ -24,81 +24,24 @@ const ARTICLE = {
     bio: "Full-stack developer specializing in React and Next.js. Writing about web development, JavaScript, and UI/UX design.",
   },
   tags: ["Next.js", "React", "Tailwind CSS"],
-  content: `
-    <p>Next.js has become one of the most popular React frameworks for building modern web applications. Its server-side rendering capabilities, file-based routing, and built-in optimizations make it an excellent choice for building blogs and content-heavy websites.</p>
-    
-    <h2>Why Next.js for Blogs?</h2>
-    
-    <p>There are several reasons why Next.js is a great choice for building a blog:</p>
-    
-    <ul>
-      <li><strong>SEO-friendly</strong>: Server-side rendering ensures that search engines can crawl and index your content.</li>
-      <li><strong>Performance</strong>: Automatic code splitting, image optimization, and other built-in optimizations ensure fast loading times.</li>
-      <li><strong>Developer Experience</strong>: The file-based routing system and the ability to mix server and client components make development a breeze.</li>
-    </ul>
-    
-    <h2>Getting Started</h2>
-    
-    <p>To get started with Next.js, you need to have Node.js installed on your machine. Then, you can create a new Next.js project using the following command:</p>
-    
-    <pre><code>npx create-next-app my-blog</code></pre>
-    
-    <p>This will create a new Next.js project with all the necessary files and dependencies. You can then navigate to the project directory and start the development server:</p>
-    
-    <pre><code>cd my-blog
-npm run dev</code></pre>
-    
-    <h2>Adding Tailwind CSS</h2>
-    
-    <p>Tailwind CSS is a utility-first CSS framework that makes it easy to build beautiful and responsive user interfaces. To add Tailwind CSS to your Next.js project, you can use the following command:</p>
-    
-    <pre><code>npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p</code></pre>
-    
-    <p>This will install Tailwind CSS and its dependencies, and create the necessary configuration files. You then need to configure Tailwind CSS to scan your project files for classes:</p>
-    
-    <pre><code>// tailwind.config.js
-module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './app/**/*.{js,ts,jsx,tsx}',
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}</code></pre>
-    
-    <p>Finally, you need to add the Tailwind CSS directives to your CSS file:</p>
-    
-    <pre><code>/* globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;</code></pre>
-    
-    <h2>Creating Blog Posts</h2>
-    
-    <p>With Next.js, you can create blog posts using Markdown files or by fetching data from a CMS. For simplicity, let's use Markdown files. First, you need to install the necessary dependencies:</p>
-    
-    <pre><code>npm install gray-matter remark remark-html</code></pre>
-    
-    <p>Then, you can create a <code>posts</code> directory in the root of your project and add your Markdown files there. Each Markdown file should have a frontmatter section with metadata about the post:</p>
-    
-    <pre><code>---
-title: 'Building a Blog with Next.js'
-excerpt: 'A step-by-step guide to building a blog with Next.js and Tailwind CSS.'
-date: '2023-06-03'
-author: 'Emily Rodriguez'
-tags: ['Next.js', 'React', 'Tailwind CSS']
----
+  content: `<h1>The Most Important Design Pattern in React: The Container-Presenter Pattern</h1><h1><br></h1><p>When you're building React apps,&nbsp;<strong>organizing your components well</strong>&nbsp;can make a huge difference. One design pattern that stands out, especially in larger applications, is the&nbsp;<strong>Container-Presenter Pattern</strong>&nbsp;(sometimes called Smart-Dumb Components). Let's dive into what it is, why it matters, and how you can use it.</p><p><br></p><h2>What is the Container-Presenter Pattern?</h2><p><br></p><p><br></p><pre class="ql-syntax" spellcheck="false">import React from 'react';
 
-Next.js has become one of the most popular React frameworks for building modern web applications...</code></pre>
-    
-    <h2>Conclusion</h2>
-    
-    <p>Building a blog with Next.js and Tailwind CSS is a great way to create a fast, SEO-friendly, and beautiful website. With the file-based routing system and the ability to mix server and client components, you can create a blog that is both easy to develop and maintain.</p>
-  `,
+interface UserProfileProps {
+name: string;
+email: string;
+}
+
+const UserProfile: React.FC&lt;UserProfileProps&gt; = ({ name, email }) =&gt; {
+return (
+&lt;div className="p-4 border rounded-md shadow-md"&gt;
+&lt;h2 className="text-xl font-bold"&gt;{name}&lt;/h2&gt;
+&lt;p className="text-gray-600"&gt;{email}&lt;/p&gt;
+&lt;/div&gt;
+);
+};
+export default UserProfile;
+</pre><p><br></p><p><br></p>
+`,
 };
 
 const formatContent = (html: string) => {
@@ -164,10 +107,10 @@ export default function BlogPage() {
               All articles
             </Link>
             <div className="space-y-4">
-              <h1 className="font-serif text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+              <h1 className="font-serif text-3xl font-bold tracking-tight md:text-4xl lg:text-4xl">
                 {ARTICLE.title}
               </h1>
-              <p className="text-xl text-muted-foreground">{ARTICLE.excerpt}</p>
+              <p className="text-muted-foreground">{ARTICLE.excerpt}</p>
               <div className="flex items-center space-x-4">
                 <Avatar className="size-12">
                   <AvatarImage
@@ -189,7 +132,7 @@ export default function BlogPage() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {ARTICLE.tags.map((tag) => (
-                  <Link key={tag} href={`/articles?tag=${tag}`}>
+                  <Link key={tag} href={`/blogs?tag=${tag}`}>
                     <Badge variant="secondary" className="rounded-full">
                       {tag}
                     </Badge>
@@ -207,7 +150,7 @@ export default function BlogPage() {
               />
             </div>
             <div
-              className="prose prose-lg prose-gray max-w-none dark:prose-invert prose-headings:font-serif prose-headings:font-bold prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline"
+              className="raw prose prose-lg prose-gray max-w-none dark:prose-invert prose-headings:font-serif prose-headings:font-bold prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline"
               dangerouslySetInnerHTML={{ __html: processedContent }}
               // dangerouslySetInnerHTML={{ __html: ARTICLE.content }}
             />

@@ -163,10 +163,10 @@ export default function ArticlesPage() {
         <div className="container mx-auto px-4 py-10 md:py-16">
           <div className="mx-auto max-w-4xl space-y-8">
             <div className="space-y-4">
-              <h1 className="font-serif text-4xl font-bold tracking-tight md:text-5xl">
+              <h1 className="font-serif text-3xl font-bold tracking-tight md:text-4xl">
                 Articles
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-muted-foreground">
                 Discover stories, thinking, and expertise from writers on any
                 topic.
               </p>

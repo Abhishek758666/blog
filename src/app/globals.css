@@ -7,7 +7,8 @@
   font-family: "gaegu";
 } */
 
-.code-block {
+.code-block,
+.ql-syntax {
   padding: 1rem;
   margin: 1.5rem 0;
   background: #d33939;
@@ -17,8 +18,9 @@
   font-size: 0.9em;
 }
 
-.inline-code {
-  padding: 0.2em 0.4em;
+.inline-code,
+.ql-syntax {
+  padding: 2rem;
   background: rgba(175, 184, 193, 0.2);
   border-radius: 3px;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -152,4 +154,22 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ***************************** */
+h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.raw {
+  all: unset !important;
+  display: block !important;
 }

@@ -178,10 +178,10 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-[2fr_1fr]">
             <div className="space-y-8">
               <div className="space-y-4">
-                <h1 className="font-serif text-4xl font-bold tracking-tight md:text-5xl">
+                <h1 className="font-serif text-3xl font-bold tracking-tight md:text-4xl">
                   Latest Articles
                 </h1>
-                <p className="text-xl text-muted-foreground">
+                <p className="text-muted-foreground">
                   Discover stories, thinking, and expertise from writers on any
                   topic.
                 </p>

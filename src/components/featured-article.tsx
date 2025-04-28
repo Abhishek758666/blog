@@ -40,7 +40,7 @@ export function FeaturedArticle({
           <span className="text-sm font-medium">{author.name}</span>
         </div>
         <Link href={`/blogs/${slug}`} className="hover:underline">
-          <h3 className="font-serif text-xl font-bold md:text-2xl">{title}</h3>
+          <h3 className="font-serif text-lg font-bold md:text-xl">{title}</h3>
         </Link>
         <p className="text-muted-foreground line-clamp-2 md:line-clamp-3">
           {excerpt}
